@@ -2,6 +2,9 @@ import numpy as np
 import sys
 import nrrd
 
+reload(sys)  
+sys.setdefaultencoding('utf8')
+
 if (len(sys.argv) < 3):
     print 'Error: missing arguments!' 
     print 'e.g. python Bound.py 0-255 inputfile.nrrd [outputfile.nrrd]'
