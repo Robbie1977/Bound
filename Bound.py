@@ -16,8 +16,16 @@ else:
             
     print 'Adding boundary markers to %s...'% str(sys.argv[2])
     readdata, header = nrrd.read(str(sys.argv[2]))
+    if (header['type'] == 'uint8'):
+            value = np.uint8(sys.argv[1])
+        else if (header['type'] == 'uint16'):
+            value = np.uint8(sys.argv[1])
+        else:
+            print 'encoding issue!'
+            value = sys.argv[1]
+            
     if (readdata[0][0][0] < 1):
-        readdata[0][0][0] = np.uint8(sys.argv[1])
+        readdata[0][0][0] = value
     #if (readdata[1][0][0] < 1):
     #    readdata[1][0][0] = np.uint8(1)
     #if (readdata[0][1][0] < 1):
@@ -28,7 +36,7 @@ else:
     #    readdata[1][1][1] = np.uint8(1)
     filesize = np.subtract(readdata.shape, 1)  
     if (readdata[filesize[0]][filesize[1]][filesize[2]] < 1):
-        readdata[filesize[0]][filesize[1]][filesize[2]] = np.uint8(sys.argv[1])
+        readdata[filesize[0]][filesize[1]][filesize[2]] = value
     #if (readdata[filesize[0]-1][filesize[1]-1][filesize[2]-1] < 1):
     #    readdata[filesize[0]-1][filesize[1]-1][filesize[2]-1] = np.uint8(1)
     #if (readdata[filesize[0]][filesize[1]-1][filesize[2]-1] < 1):
