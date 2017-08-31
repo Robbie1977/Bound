@@ -18,7 +18,7 @@ else:
     readdata, header = nrrd.read(str(sys.argv[2]))
     if (header['type'] == 'uint8'):
          value = np.uint8(sys.argv[1])
-    else if (header['type'] == 'uint16'):
+    elif (header['type'] == 'uint16'):
          value = np.uint8(sys.argv[1])
     else:
          print 'encoding issue!'
