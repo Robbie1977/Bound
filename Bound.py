@@ -17,12 +17,12 @@ else:
     print 'Adding boundary markers to %s...'% str(sys.argv[2])
     readdata, header = nrrd.read(str(sys.argv[2]))
     if (header['type'] == 'uint8'):
-            value = np.uint8(sys.argv[1])
-        else if (header['type'] == 'uint16'):
-            value = np.uint8(sys.argv[1])
-        else:
-            print 'encoding issue!'
-            value = sys.argv[1]
+         value = np.uint8(sys.argv[1])
+    else if (header['type'] == 'uint16'):
+         value = np.uint8(sys.argv[1])
+    else:
+         print 'encoding issue!'
+         value = sys.argv[1]
             
     if (readdata[0][0][0] < 1):
         readdata[0][0][0] = value
