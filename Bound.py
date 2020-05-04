@@ -6,22 +6,22 @@ reload(sys)
 sys.setdefaultencoding('utf8')
 
 if (len(sys.argv) < 3):
-    print 'Error: missing arguments!' 
-    print 'e.g. python Bound.py 0-255 inputfile.nrrd [outputfile.nrrd]'
+    print('Error: missing arguments!' )
+    print('e.g. python Bound.py 0-255 inputfile.nrrd [outputfile.nrrd]')
 else:
     if (len(sys.argv) > 3):
         outfile = str(sys.argv[3])
     else:
         outfile = str(sys.argv[2])
             
-    print 'Adding boundary markers to %s...'% str(sys.argv[2])
+    print('Adding boundary markers to %s...'% str(sys.argv[2]))
     readdata, header = nrrd.read(str(sys.argv[2]))
     if (header['type'] == 'uint8'):
          value = np.uint8(sys.argv[1])
     elif (header['type'] == 'uint16'):
          value = np.uint8(sys.argv[1])
     else:
-         print 'encoding issue!'
+         print('encoding issue!')
          value = sys.argv[1]
             
     if (readdata[0][0][0] < 1):
@@ -58,7 +58,7 @@ else:
     #    readdata[filesize[0]][0][0] = np.uint8(1)
     #if (readdata[0][filesize[1]][0] < 1):
     #    readdata[0][filesize[1]][0] = np.uint8(1)
-    print 'Saving result to %s...'% outfile
-    nrrd.write(outfile, readdata, options=header)
+    print('Saving result to %s...'% outfile)
+    nrrd.write(outfile, readdata, header=header)
 
-print 'Done.'
+print('Done.')
