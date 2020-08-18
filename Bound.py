@@ -23,7 +23,7 @@ else:
     else:
          print('encoding issue!')
          print(header['type'])
-         value = sys.argv[1]
+         value = np.uint8(sys.argv[1])
             
     if (readdata[0][0][0] < 1):
         readdata[0][0][0] = value
