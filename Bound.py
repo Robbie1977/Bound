@@ -25,40 +25,11 @@ else:
          print(header['type'])
          value = np.uint8(sys.argv[1])
             
-    if (readdata[0][0][0] < 1):
+    if (readdata[0][0][0] < value):
         readdata[0][0][0] = value
-    #if (readdata[1][0][0] < 1):
-    #    readdata[1][0][0] = np.uint8(1)
-    #if (readdata[0][1][0] < 1):
-    #    readdata[0][1][0] = np.uint8(1)
-    #if (readdata[0][0][1] < 1):
-    #    readdata[0][0][1] = np.uint8(1)
-    #if (readdata[1][1][1] < 1):
-    #    readdata[1][1][1] = np.uint8(1)
     filesize = np.subtract(readdata.shape, 1)  
-    if (readdata[filesize[0]][filesize[1]][filesize[2]] < 1):
+    if (readdata[filesize[0]][filesize[1]][filesize[2]] < value):
         readdata[filesize[0]][filesize[1]][filesize[2]] = value
-    #if (readdata[filesize[0]-1][filesize[1]-1][filesize[2]-1] < 1):
-    #    readdata[filesize[0]-1][filesize[1]-1][filesize[2]-1] = np.uint8(1)
-    #if (readdata[filesize[0]][filesize[1]-1][filesize[2]-1] < 1):
-    #    readdata[filesize[0]][filesize[1]-1][filesize[2]-1] = np.uint8(1)
-    #if (readdata[filesize[0]-1][filesize[1]][filesize[2]-1] < 1):
-    #    readdata[filesize[0]-1][filesize[1]][filesize[2]-1] = np.uint8(1)
-    #if (readdata[filesize[0]-1][filesize[1]-1][filesize[2]] < 1):
-    #    readdata[filesize[0]-1][filesize[1]-1][filesize[2]] = np.uint8(1)
-    #
-    #if (readdata[0][filesize[1]][filesize[2]] < 1):
-    #    readdata[0][filesize[1]][filesize[2]] = np.uint8(1)
-    #if (readdata[filesize[0]][0][filesize[2]] < 1):
-    #    readdata[filesize[0]][0][filesize[2]] = np.uint8(1)
-    #if (readdata[filesize[0]][filesize[1]][0] < 1):
-    #    readdata[filesize[0]][filesize[1]][0] = np.uint8(1)
-    #if (readdata[0][0][filesize[2]] < 1):
-    #    readdata[0][0][filesize[2]] = np.uint8(1)
-    #if (readdata[filesize[0]][0][0] < 1):
-    #    readdata[filesize[0]][0][0] = np.uint8(1)
-    #if (readdata[0][filesize[1]][0] < 1):
-    #    readdata[0][filesize[1]][0] = np.uint8(1)
     print('Saving result to %s...'% outfile)
     nrrd.write(outfile, readdata, header=header)
 
